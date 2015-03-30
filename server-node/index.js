@@ -8,12 +8,7 @@ var port = 1234;
 app.use('/', express.static(__dirname + '/../angular/public'));
 app.use(bodyParser.json());
 
-app.get('/api/env', function (req, res) {
-    return res.json([
-        'hi',
-        'there'
-    ]);
-});
+app.use('/api', require('./controllers'));
 
 app.listen(port, function () {
     console.log('thingz server listening on port: ' + port);
