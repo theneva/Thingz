@@ -50,7 +50,7 @@ gulp.task('html', function () {
 });
 
 gulp.task('concatJs', function () {
-    gulp.src(angularJsPath)
+    gulp.src([angularModulePath, angularJsPath])
         .pipe(concat('app.js'))
         .pipe(ngAnnotate())
         .pipe(uglify())
