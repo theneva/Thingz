@@ -1,10 +1,14 @@
 angular.module('thingz').service('SessionsService', function ($http) {
     this.login = function (username, password) {
-        return {
-            success: function (cb) {
-                cb();
-            }
+        var loginAttempt = {
+            username: username,
+            password: password
         };
+
+        return $http.post('/api/sessions', loginAttempt)
+            .success(function(token) {
+                $http.defaults.headers.common['x-auth'] = token;
+            });
     };
 
     this.logout = function () {

@@ -1,7 +1,7 @@
 angular.module('thingz').controller('LoginController', function ($scope, $location, SessionsService) {
     $scope.login = function (username, password) {
         SessionsService.login(username, password)
-            .success(function () {
+            .then(function () {
                 $scope.$emit('login', username);
                 $location.path('/');
             });
