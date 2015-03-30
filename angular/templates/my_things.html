@@ -1,1 +1,7 @@
-{{things}}
+<h1>Things</h1>
+
+<p ng-if="things.length === 0">You don't have any things yet!</p>
+
+<ul ng-repeat="thing in things">
+    <li>{{thing}}</li>
+</ul>

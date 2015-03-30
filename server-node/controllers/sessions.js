@@ -1,5 +1,8 @@
 var router = require('express').Router();
 var jwt = require('jwt-simple');
+var bcrypt = require('bcrypt');
+
+var User = require('../models/user');
 
 var jwtSecret = require('../secrets').jwt;
 
@@ -7,24 +10,30 @@ router.get('/', function (req, res) {
     res.send(jwt.encode({username: 'theneva'}, jwtSecret));
 });
 
-router.post('/', function (req, res) {
+router.post('/', function (req, res, next) {
     var loginAttempt = req.body;
 
     if (!loginAttempt || !loginAttempt.username || !loginAttempt.password) {
         return res.status(401).send('Request must contain {username, password}');
     }
 
-    if (loginAttempt.username !== 'theneva'
-        || loginAttempt.password !== '1234') {
-        return res.status(401).send('Wrong username or password');
-    }
+    User.findOne({username: loginAttempt.username}, function(err, user) {
+        if (!user) {
+            return res.status(401).send('Wrong username or password');
+        }
 
-    var payload = {
-        username: 'Theneva',
-        fullName: 'Martin Lehmann'
-    };
+        bcrypt.compare(loginAttempt.password, user.password, function(err, success) {
+            if (err) return next(err);
 
-    return res.send(jwt.encode(payload, jwtSecret));
+            if (!success) {
+                return res.status(401).send('Wrong username or password');
+            }
+
+            delete user.password;
+            delete user.things;
+            return res.send(jwt.encode(user, jwtSecret));
+        });
+    });
 });
 
 module.exports = router;
