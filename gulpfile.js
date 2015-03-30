@@ -4,6 +4,7 @@ var minifyHtml = require('gulp-minify-html');
 var stylus = require('gulp-stylus');
 var minifyCss = require('gulp-minify-css');
 var ngAnnotate = require('gulp-ng-annotate');
+var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 var jshint = require('gulp-jshint');
 var nodemon = require('gulp-nodemon');
@@ -51,9 +52,11 @@ gulp.task('html', function () {
 
 gulp.task('concatJs', function () {
     gulp.src([angularModulePath, angularJsPath])
+        .pipe(sourcemaps.init())
         .pipe(concat('app.js'))
         .pipe(ngAnnotate())
         .pipe(uglify())
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest(publicPath))
         .pipe(livereload());
 });
