@@ -13,7 +13,11 @@
             <li class="nav navbar-nav"><a href="/#/">Home</a></li>
             <li class="nav navbar-nav"><a href="/#/something-else">Something else</a></li>
         </ul>
-        <p class="navbar-text navbar-right">{{currentUser}}</p>
+
+        <a class="navbar-text navbar-right" href="/#/login" ng-if="!currentUser">Log in</a>
+        <a class="navbar-text navbar-right" ng-click="logout()" ng-if="currentUser">log out</a>
+
+        <p class="navbar-text navbar-right" ng-if="currentUser">{{currentUser}}</p>
     </div>
 </nav>
 <div class="container" ng-view></div>
