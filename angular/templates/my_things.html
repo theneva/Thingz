@@ -1,7 +1,11 @@
 <h1>Things</h1>
 
-<p ng-if="things.length === 0">You don't have any things yet!</p>
-
+<span ng-if="things.length === 0">
+<p>
+    You don't have any things yet…
+    <a href="/#/new-thing">Add one!</a>
+</p>
+</span>
 <ul ng-repeat="thing in things">
     <li>{{thing}}</li>
 </ul>

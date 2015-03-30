@@ -8,6 +8,6 @@ router.get('/env', function (req, res) {
 });
 
 router.use('/sessions', require('./sessions'));
-router.use('/my-things', require('./things'));
+router.use('/things', require('./things'));
 
 module.exports = router;
