@@ -4,6 +4,14 @@ angular.module('thingz').controller('ApplicationController', function ($scope, $
             return;
         }
 
+        var storedToken = localStorage.token;
+        if (storedToken) {
+            SessionsService.restoreSession(storedToken);
+            $scope.$emit('login', SessionsService.getTokenPayload(storedToken));
+            $location.path('/');
+            return;
+        }
+
         if ($location.path() === '/login') {
             return;
         }
@@ -11,8 +19,9 @@ angular.module('thingz').controller('ApplicationController', function ($scope, $
         $location.path('/login');
     });
 
-    $scope.$on('login', function (event, username) {
-        $scope.currentUser = username;
+    $scope.$on('login', function (event, user) {
+        $scope.currentUser = JSON.parse(user);
+        $location.path('/');
     });
 
     $scope.logout = function () {

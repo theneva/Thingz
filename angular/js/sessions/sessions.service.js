@@ -1,17 +1,29 @@
 angular.module('thingz').service('SessionsService', function ($http) {
-    this.login = function (username, password) {
+    var service = this;
+
+    service.login = function (username, password) {
         var loginAttempt = {
             username: username,
             password: password
         };
 
         return $http.post('/api/sessions', loginAttempt)
-            .success(function(token) {
+            .success(function (token) {
+                localStorage.token = token;
                 $http.defaults.headers.common['x-auth'] = token;
             });
     };
 
-    this.logout = function () {
-        delete $http.defaults.headers.common.Authorization;
+    service.logout = function () {
+        delete localStorage.token;
+        delete $http.defaults.headers.common['x-auth'];
+    };
+
+    service.restoreSession = function(token) {
+        $http.defaults.headers.common['x-auth'] = token;
+    };
+
+    service.getTokenPayload = function(token) {
+        return atob(token.split('.')[1]);
     };
 });
