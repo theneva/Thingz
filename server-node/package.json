@@ -1,0 +1,12 @@
+{
+  "name": "thingz-server",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Martin Lehmann",
+  "dependencies": {
+    "body-parser": "^1.12.2",
+    "express": "^4.12.3",
+    "jwt-simple": "^0.2.0",
+    "morgan": "^1.5.2"
+  }
+}
