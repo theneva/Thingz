@@ -1,0 +1,13 @@
+<form ng-submit="saveThing()">
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" placeholder="Name" ng-model="newThing.name" ng-required="true"/>
+    </div>
+
+    <div class="form-group">
+        <label>Location</label>
+        <input type="text" class="form-control" placeholder="Name" ng-model="newThing.location"/>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save thing</button>
+</form>

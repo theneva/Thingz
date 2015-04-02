@@ -8,7 +8,7 @@ angular.module('thingz').controller('ApplicationController', function ($scope, $
         if (storedToken) {
             SessionsService.restoreSession(storedToken);
             $scope.$emit('login', SessionsService.getTokenPayload(storedToken));
-            $location.path('/');
+            $location.path('/'); // FIXME
             return;
         }
 

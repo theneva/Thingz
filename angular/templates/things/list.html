@@ -1,0 +1,29 @@
+<h1>Things</h1>
+
+<span ng-if="things.length === 0">
+<p>
+    You don't have any things yet…
+    <a href="/#/new-thing">Add one!</a>
+</p>
+</span>
+<form ng-if="things.length !== 0" ng-submit="saveThing()">
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td><input type="text" class="form-control" placeholder="Name" ng-model="newThing.name" ng-required="true"/></td>
+            <td><input type="text" class="form-control" placeholder="Location" ng-model="newThing.location"/></td>
+            <td>
+                <button type="submit" class="btn btn-primary">Quick add</button>
+            </td>
+        </tr>
+        <tr ng-repeat="thing in things">
+            <td>{{thing.name}}</td>
+            <td>{{thing.location}}</td>
+            <td></td>
+        </tr>
+    </table>
+</form>
