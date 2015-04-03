@@ -9,5 +9,11 @@
         <input type="text" class="form-control" placeholder="Location" ng-model="newThing.location"/>
     </div>
 
+    <div class="form-group">
+        <label>Image URL</label>
+        <input type="text" class="form-control" placeholder="Image URL" ng-model="newThing.imageUrl"/>
+        <img ng-src="{{newThing.imageUrl}}" class="img-circle col-xs-4"/>
+    </div>
+
     <button type="submit" class="btn btn-primary">Save thing</button>
 </form>
