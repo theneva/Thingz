@@ -30,6 +30,7 @@ router.post('/', function (req, res, next) {
 
             newUser.password = hash;
             newUser.things = [];
+            newUser.locations = [];
 
             newUser.save(function (err) {
                 if (err) return next(err);

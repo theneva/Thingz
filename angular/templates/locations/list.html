@@ -1,0 +1,29 @@
+<h1>My locations</h1>
+<div class="form-group col-xs-5">
+    <label>Filter</label>
+    <input type="text" class="form-control" placeholder="Location name" ng-model="locationsFilter"/>
+</div>
+<form ng-submit="saveLocation()">
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td><input type="text" class="form-control" placeholder="Name" ng-model="newLocation.name"
+                       ng-required="true"/>
+            </td>
+            <td>
+                <button type="submit" class="btn btn-primary">Quick add</button>
+            </td>
+        </tr>
+        <tr ng-repeat="location in locations | filter: locationsFilter">
+            <td>{{location.name}}</td>
+            <td>
+                <a class="btn btn-danger" ng-click="removeLocation(location._id)">Remove</a>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<h3 ng-if="locations.length === 0">No locations yet!</h3>

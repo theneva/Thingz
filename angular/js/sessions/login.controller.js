@@ -1,4 +1,4 @@
-angular.module('thingz').controller('LoginController', function ($scope, $location, SessionsService) {
+angular.module('thingz').controller('LoginController', function ($scope, $location, UsersService, SessionsService) {
     $scope.register = function () {
         UsersService.create($scope.newUser)
             .success(function (user) {
