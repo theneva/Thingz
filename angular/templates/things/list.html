@@ -23,7 +23,10 @@
                 <td><input type="text" class="form-control" placeholder="Name" ng-model="newThing.name"
                            ng-required="true"/>
                 </td>
-                <td><input type="text" class="form-control" placeholder="Location" ng-model="newThing.location"/></td>
+                <!--<td><input type="text" class="form-control" placeholder="Location" ng-model="newThing.location"/></td>-->
+                <td>
+                    <select class="form-control" ng-options="location.name as location.name for location in locations" ng-model="newThing.location"></select>
+                </td>
                 <td><input type="text" class="form-control" placeholder="Image URL" ng-model="newThing.imageUrl"/></td>
                 <td>
                     <button type="submit" class="btn btn-primary">Quick add</button>

@@ -1,4 +1,8 @@
-angular.module('thingz').controller('NewThingController', function($scope, ThingsService) {
+angular.module('thingz').controller('NewThingController', function($scope, ThingsService, LocationsService) {
+    LocationsService.query().success(function(locations) {
+        $scope.locations = locations;
+    });
+
     $scope.newThing = {};
 
     $scope.saveThing = function() {

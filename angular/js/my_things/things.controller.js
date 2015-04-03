@@ -1,6 +1,10 @@
-angular.module('thingz').controller('MyThingsController', function($scope, ThingsService) {
+angular.module('thingz').controller('MyThingsController', function($scope, ThingsService, LocationsService) {
     ThingsService.query().success(function(things) {
         $scope.things = things;
+    });
+
+    LocationsService.query().success(function(locations) {
+        $scope.locations = locations;
     });
 
     $scope.newThing = {};
