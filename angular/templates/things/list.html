@@ -14,7 +14,8 @@
             <th></th>
         </tr>
         <tr>
-            <td><input type="text" class="form-control" placeholder="Name" ng-model="newThing.name" ng-required="true"/></td>
+            <td><input type="text" class="form-control" placeholder="Name" ng-model="newThing.name" ng-required="true"/>
+            </td>
             <td><input type="text" class="form-control" placeholder="Location" ng-model="newThing.location"/></td>
             <td>
                 <button type="submit" class="btn btn-primary">Quick add</button>
@@ -23,7 +24,9 @@
         <tr ng-repeat="thing in things">
             <td><a href="/#/things/{{thing._id}}">{{thing.name}}</a></td>
             <td>{{thing.location}}</td>
-            <td></td>
+            <td>
+                <a class="btn btn-danger" ng-click="removeThing(thing._id)">Remove</a>
+            </td>
         </tr>
     </table>
 </form>

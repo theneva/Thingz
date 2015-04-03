@@ -10,4 +10,8 @@ angular.module('thingz').service('ThingsService', function($http) {
     this.save = function(thing) {
         return $http.post('/api/things', thing);
     };
+
+    this.remove = function(id) {
+        return $http.delete('/api/things/' + id);
+    }
 });
