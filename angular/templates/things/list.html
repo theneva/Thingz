@@ -1,4 +1,4 @@
-<h1>Things</h1>
+<h1>My things</h1>
 
 <span ng-if="things.length === 0">
 <p>
@@ -7,6 +7,10 @@
 </p>
 </span>
 <div ng-if="things.length !== 0">
+    <div class="form-group col-xs-5">
+        <label>Filter</label>
+        <input type="text" class="form-control" placeholder="Location, name, ..." ng-model="thingsFilter"/>
+    </div>
     <form ng-submit="saveThing()">
         <table class="table">
             <tr>
@@ -25,7 +29,7 @@
                     <button type="submit" class="btn btn-primary">Quick add</button>
                 </td>
             </tr>
-            <tr ng-repeat="thing in things">
+            <tr ng-repeat="thing in things | filter: thingsFilter">
                 <td><a href="/#/{{thing._id}}">{{thing.name}}</a></td>
                 <td>{{thing.location}}</td>
                 <td class="col-xs-2">
