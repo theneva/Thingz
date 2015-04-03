@@ -25,7 +25,9 @@
         </tr>
         <tr ng-repeat="thing in things">
             <td class="col-xs-2">
-                <img ng-src="{{thing.imageUrl}}" class="img-circle col-lg-5 col-md-7 col-col-sm-8 col-xs-8"/>
+                <a href="/#/things/{{thing._id}}">
+                    <img ng-src="{{thing.imageUrl}}" class="img-circle col-lg-5 col-md-7 col-col-sm-8 col-xs-8"/>
+                </a>
             </td>
             <td><a href="/#/things/{{thing._id}}">{{thing.name}}</a></td>
             <td>{{thing.location}}</td>
