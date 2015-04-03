@@ -53,7 +53,7 @@ router.post('/', function (req, res, next) {
         if (err) return next(err);
 
         var thing = new Thing(req.body);
-        user.things.push(thing);
+        user.things.unshift(thing);
 
         user.save(function (err) {
             if (err) return next(err);

@@ -9,11 +9,13 @@
 <form ng-if="things.length !== 0" ng-submit="saveThing()">
     <table class="table">
         <tr>
+            <th>Image</th>
             <th>Name</th>
             <th>Location</th>
             <th></th>
         </tr>
         <tr>
+            <td><input type="text" class="form-control" placeholder="Image URL" ng-model="newThing.imageUrl"/></td>
             <td><input type="text" class="form-control" placeholder="Name" ng-model="newThing.name" ng-required="true"/>
             </td>
             <td><input type="text" class="form-control" placeholder="Location" ng-model="newThing.location"/></td>
@@ -22,6 +24,9 @@
             </td>
         </tr>
         <tr ng-repeat="thing in things">
+            <td class="col-xs-2">
+                <img ng-src="{{thing.imageUrl}}" class="img-circle col-lg-5 col-md-7 col-col-sm-8 col-xs-8"/>
+            </td>
             <td><a href="/#/things/{{thing._id}}">{{thing.name}}</a></td>
             <td>{{thing.location}}</td>
             <td>
