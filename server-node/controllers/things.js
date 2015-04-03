@@ -1,5 +1,6 @@
 var router = require('express').Router();
 var jwt = require('jwt-simple');
+var _ = require('lodash');
 
 var db = require('../models/user');
 var jwtSecret = require('../secrets').jwt;
@@ -18,6 +19,24 @@ router.get('/', function (req, res, next) {
     db.findById(tokenUser._id, function (err, user) {
         if (err) return next(err);
         return res.json(user.things);
+    });
+});
+
+router.get('/:id', function (req, res, next) {
+    var token = req.header('x-auth');
+
+    if (!token) {
+        return res.status(401).send('No token supplied');
+    }
+
+    var tokenUser = jwt.decode(token, jwtSecret);
+
+    db.findById(tokenUser._id, function (err, user) {
+        var thing = _.find(user.things, function (thing) {
+            return thing._id == req.params.id;
+        });
+        
+        return res.json(thing);
     });
 });
 

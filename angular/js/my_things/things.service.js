@@ -3,6 +3,10 @@ angular.module('thingz').service('ThingsService', function($http) {
         return $http.get('/api/things');
     };
 
+    this.get = function(id) {
+        return $http.get('/api/things/' + id);
+    };
+
     this.save = function(thing) {
         return $http.post('/api/things', thing);
     };

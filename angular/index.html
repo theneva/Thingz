@@ -15,6 +15,7 @@
         </ul>
 
         <a class="navbar-text navbar-right" href="/#/login" ng-if="!currentUser">Log in</a>
+        <a class="navbar-text navbar-right" href="/#/register" ng-if="!currentUser">Register</a>
         <a class="navbar-text navbar-right" ng-click="logout()" ng-if="currentUser">log out</a>
 
         <p class="navbar-text navbar-right" ng-if="currentUser">{{currentUser.username || 'what'}}</p>

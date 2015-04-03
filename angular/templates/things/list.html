@@ -21,7 +21,7 @@
             </td>
         </tr>
         <tr ng-repeat="thing in things">
-            <td>{{thing.name}}</td>
+            <td><a href="/#/things/{{thing._id}}">{{thing.name}}</a></td>
             <td>{{thing.location}}</td>
             <td></td>
         </tr>
