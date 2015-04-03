@@ -13,8 +13,7 @@ angular.module('thingz').controller('ApplicationController', function ($scope, $
         }
 
         var destination = $location.path();
-        if (destination === '/login'
-            || destination === '/register') {
+        if (destination === '/login') {
             return;
         }
 
